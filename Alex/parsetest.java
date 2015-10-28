@@ -2,6 +2,8 @@
 import java.util.Collection;
 import java.util.List;
 import java.io.StringReader;
+import java.lang.reflect.Array;
+
 
 import edu.stanford.nlp.process.Tokenizer;
 import edu.stanford.nlp.process.TokenizerFactory;
@@ -34,15 +36,48 @@ class parsetest {
 			Tree parse = lp.apply(sentence);
 			Tree flattened = parse.flatten();
 
-			System.out.println(flattened.toString());
-			System.out.println();
-			flattened.pennPrint();
-			System.out.println();
-			
-			System.out.println(parse.toString());
-			System.out.println();	
-			parse.pennPrint();
-			System.out.println();
+			if(Array.getLength(args) > 0)
+			{
+				System.out.println();
+
+				switch(args[0])
+				{
+					case "tree" : //print a formatted tree
+						parse.pennPrint();
+						break;
+
+					case "string" : //print the tree as string
+						System.out.println(parse.toString());
+						break;
+
+					case "array" : //print all elements of tree converted to array
+						Object[] parsearray = parse.toArray();
+						for(Object x : parsearray)
+						{
+							System.out.println(x.toString());
+							System.out.println();
+						}
+						break;
+
+					case "ftree" : //as above but with flattened tree
+						flattened.pennPrint();
+						break;
+
+					case "fstring" : //as above but with flattened tree
+						System.out.println(flattened.toString());
+						break;
+
+					case "farray" : //as above but with flattened tree
+						Object[] flatarray = flattened.toArray();
+						for(Object x : flatarray)
+						{
+							System.out.println(x.toString());
+							System.out.println();
+						}
+						break;
+
+				}
+			}
 
 /*			if (gsf != null) 
 			{
