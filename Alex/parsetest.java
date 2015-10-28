@@ -29,8 +29,7 @@ class parsetest {
 	    {
 	      gsf = tlp.grammaticalStructureFactory();
 	    }
-	    // You could also create a tokenizer here (as below) and pass it
-	    // to DocumentPreprocessor
+
 	    for (List<HasWord> sentence : new DocumentPreprocessor(filename)) 
 	    {
 			Tree parse = lp.apply(sentence);
