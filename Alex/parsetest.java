@@ -16,7 +16,8 @@ import edu.stanford.nlp.ling.Sentence;
 import edu.stanford.nlp.trees.*;
 import edu.stanford.nlp.parser.lexparser.LexicalizedParser;
 
-class parsetest {
+class parsetest 
+{
 	public static void main(String[] args)
 	{
 		String filename = "single.txt";
@@ -78,13 +79,13 @@ class parsetest {
 				}
 			}
 
-/*			if (gsf != null) 
+			if (gsf != null) 
 			{
 				GrammaticalStructure gs = gsf.newGrammaticalStructure(parse);
 				Collection tdl = gs.typedDependenciesCCprocessed();
 				System.out.println(tdl);
 				System.out.println();
-			}*/
+			}
    		}
     
 	}
